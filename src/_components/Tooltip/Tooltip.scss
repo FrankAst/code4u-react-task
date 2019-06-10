@@ -1,0 +1,21 @@
+.root {
+    position: fixed;
+    display: flex;
+    flex: auto;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 8px;
+    background-color: #ffffff;
+    border: 1px solid black;
+    border-radius: 4px;
+}
+
+.cancelBtn {
+    display: flex;
+    align-self: flex-end;
+    outline: none;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}

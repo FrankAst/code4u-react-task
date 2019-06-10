@@ -1,11 +1,23 @@
 // @flow
 
-import React from 'react';
-import './App.scss';
+import * as React from 'react';
+import Container from '_components/Container/Container';
+import s from './App.scss';
 
 const App = () => {
+  const example = {
+    type: 'container',
+    items: [
+      { type: 'box', color: '#ffffff' },
+      { type: 'container', items: [{ type: 'box', color: 'sdc' }] },
+    ],
+  };
   return (
-    <div>It works</div>
+    <div className={s.root}>
+      <div className={s.container}>
+        <Container container={example} />
+      </div>
+    </div>
   );
 };
 

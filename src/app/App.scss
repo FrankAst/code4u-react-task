@@ -1,1 +1,13 @@
 @import "src/_components/_reset.scss";
+
+.root {
+    display: flex;
+    flex-direction: column;
+    margin: 0px 100px;
+}
+
+.container {
+    margin-top: 54px;
+    display: flex;
+    flex: 1 100%;
+}
