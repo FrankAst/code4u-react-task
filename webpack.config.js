@@ -62,4 +62,10 @@ module.exports = {
       filename: 'index.html',
     }),
   ],
+
+  resolve: {
+    alias: {
+      _components: path.join(__dirname, './src/_components'),
+    },
+  },
 };

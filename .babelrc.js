@@ -11,6 +11,7 @@ const plugins = [
       root: [path.resolve('./')],
     },
   ],
+  [require.resolve('babel-plugin-webpack-alias'), { 'config': './webpack.config.js' }],
   [require.resolve('@babel/plugin-proposal-class-properties'), { loose: true }],
   require.resolve('@babel/plugin-proposal-object-rest-spread'),
   require.resolve('@babel/plugin-syntax-dynamic-import'),
