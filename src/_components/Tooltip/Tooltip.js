@@ -6,7 +6,8 @@ import Portal from '_components/Portal';
 import s from './Tooltip.scss';
 
 type Props = {
-  children: React.Element<*>,
+  children: React.Element<any>,
+  body: React.Element<any>,
   width: number,
   height: number,
   space: number,
@@ -16,15 +17,16 @@ type State = {
 };
 
 export default class Tooltip extends React.PureComponent<Props, State> {
-  ref: ?HTMLElement;
+  childRef: ?HTMLElement;
+  hideTooltipTimerId: number;
   state: State = {
     isVisible: false,
   };
 
-  calculatePosition = () => {
+  calculatePosition = (): Object => {
     const { width, height, space } = this.props;
     const style = { width, height };
-    const dimensions = this.ref.getBoundingClientRect();
+    const dimensions = this.childRef.getBoundingClientRect();
     style.left = dimensions.left + dimensions.width / 2 - width / 2;
     style.left = Math.max(space, style.left);
     style.left = Math.min(style.left, document.body.clientWidth - width - space);
@@ -32,30 +34,39 @@ export default class Tooltip extends React.PureComponent<Props, State> {
     return style;
   };
 
-  toogleTooltip = (value: boolean) => {
-    this.setState({ isVisible: value });
+  showTooltip = () => {
+    if (this.hideTooltipTimerId) {
+      clearTimeout(this.hideTooltipTimerId);
+      this.hideTooltipTimerId = null;
+    }
+    this.setState({ isVisible: true });
+  };
+
+  hideTooltipDelayed = () => {
+    this.hideTooltipTimerId = setTimeout(() => this.setState({ isVisible: false }), 1000);
   };
 
   render() {
-    const { children } = this.props;
+    const { children, body } = this.props || {};
     const { isVisible } = this.state;
     return (
       <>
-        <span onMouseOver={() => this.toogleTooltip(true)} ref={ref => (this.ref = ref)}>
+        <span
+          onMouseOut={() => this.hideTooltipDelayed()}
+          onMouseOver={() => this.showTooltip()}
+          ref={ref => (this.childRef = ref)}
+        >
           {children}
         </span>
         {isVisible && (
           <Portal>
-            <div className={s.root} style={this.calculatePosition()}>
-              <button
-                className={s.cancelBtn}
-                onClick={() => this.toogleTooltip(false)}
-                type="button"
-              >
-                x
-              </button>
-              <button type="button">Container</button>
-              <button type="button">Box</button>
+            <div
+              onMouseOver={() => this.showTooltip()}
+              onMouseOut={() => this.hideTooltipDelayed()}
+              className={s.root}
+              style={this.calculatePosition()}
+            >
+              {body}
             </div>
           </Portal>
         )}
