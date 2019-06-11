@@ -4,6 +4,7 @@ const path = require('path');
 const fs = require('fs');
 
 const plugins = [
+ [require.resolve('@babel/plugin-proposal-decorators'), { legacy: true }],
   require.resolve('@babel/plugin-transform-flow-strip-types'),
   [
     require.resolve('babel-plugin-module-resolver'),
