@@ -11,3 +11,11 @@
     display: flex;
     flex: 1 100%;
 }
+
+.storeControls {
+    display: flex;
+    justify-content: space-between;
+    flex: 1 100%;
+    max-width: 50%;
+    margin-top: 54px;
+}

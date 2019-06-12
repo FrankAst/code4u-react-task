@@ -1,0 +1,13 @@
+.root {
+    display: flex;
+    flex-direction: column;
+}
+
+.injectBtn {
+    margin-bottom: 8px;
+}
+
+.errorMsg {
+    color: red;
+    font-weight: bold;
+}
