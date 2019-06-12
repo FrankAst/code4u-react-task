@@ -3,8 +3,16 @@
 import { observable, action } from 'mobx';
 
 class Box {
+  constructor(color: string) {
+    this.color = color;
+  }
+
   @observable type: string = 'box';
   @observable color: string;
+
+  @action changeColor = color => {
+    this.color = color;
+  };
 }
 
 class Container {
@@ -16,7 +24,7 @@ class Container {
   };
 
   @action addBox = () => {
-    this.items.push(new Box());
+    this.items.push(new Box('#F5A540'));
   };
 }
 
