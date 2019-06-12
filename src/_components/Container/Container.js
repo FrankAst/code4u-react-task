@@ -1,5 +1,5 @@
 // @flow
-/* eslint-disable jsx-a11y/mouse-events-have-key-events */
+/* eslint-disable jsx-a11y/mouse-events-have-key-events, react/no-array-index-key */
 
 import * as React from 'react';
 import Box, { type BoxT } from '_components/Box/Box';
@@ -20,17 +20,17 @@ type Props = {
 class Container extends React.PureComponent<Props, void> {
   getChildren = (items: Array<BoxT | ContainerT>): ?Array<React.Element> => {
     if (items?.length > 0) {
-      return items.map(item => {
+      return items.map((item, idx) => {
         switch (item.type) {
           case 'box':
             return (
-              <div className={s.child}>
+              <div key={idx} className={s.child}>
                 <Box box={item} />
               </div>
             );
           case 'container':
             return (
-              <div className={s.child}>
+              <div key={idx} className={s.child}>
                 <Container container={item} />
               </div>
             );
@@ -60,7 +60,7 @@ class Container extends React.PureComponent<Props, void> {
   render() {
     const { container } = this.props || {};
     const { type, items } = container;
-    if (type !== 'container') throw Error(`Expected container type`);
+    if (type !== 'container') throw Error(`Expected a container type`);
     const children = this.getChildren(items);
     return (
       <div className={s.root}>
