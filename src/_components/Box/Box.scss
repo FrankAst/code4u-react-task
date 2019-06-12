@@ -1,7 +1,13 @@
 .root {
-    background-color: orange;
     height: 100px;
     width: 100px;
     border: 1px solid black;
     border-radius: 4px;
+}
+
+.colorPicker {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
