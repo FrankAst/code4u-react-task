@@ -24,7 +24,7 @@ export default class Tooltip extends React.PureComponent<Props, State> {
   };
 
   calculatePosition = (): Object => {
-    const { width, height, space } = this.props;
+    const { width, height, space } = this.props || {};
     const style = { width, height };
     const dimensions = this.childRef.getBoundingClientRect();
     style.left = dimensions.left + dimensions.width / 2 - width / 2;

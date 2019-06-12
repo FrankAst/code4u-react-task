@@ -4,12 +4,8 @@ import * as React from 'react';
 import { observer } from 'mobx-react';
 import { ChromePicker } from 'react-color';
 import Portal from '_components/Portal';
+import type { BoxT } from 'store';
 import s from './Box.scss';
-
-export type BoxT = {
-  type: 'box',
-  color: string,
-};
 
 type Props = {
   box: BoxT,

@@ -66,6 +66,7 @@ module.exports = {
   resolve: {
     alias: {
       _components: path.join(__dirname, './src/_components'),
+      store: path.join(__dirname, './src/store'),
     },
   },
 };

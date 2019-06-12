@@ -2,15 +2,11 @@
 /* eslint-disable jsx-a11y/mouse-events-have-key-events, react/no-array-index-key */
 
 import * as React from 'react';
-import Box, { type BoxT } from '_components/Box/Box';
+import Box from '_components/Box/Box';
 import Tooltip from '_components/Tooltip/Tooltip';
 import { observer } from 'mobx-react';
+import type { ContainerT, BoxT } from 'store';
 import s from './Container.scss';
-
-export type ContainerT = {
-  type: string,
-  items: Array<BoxT | ContainerT>,
-};
 
 type Props = {
   container: ContainerT,
