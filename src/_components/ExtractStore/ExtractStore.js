@@ -30,7 +30,7 @@ class ExtractStore extends React.PureComponent<Props, State> {
     const { rootContainer } = store;
     const { isShowStore } = this.state || {};
     return (
-      <div className={s.root}>
+      <div>
         <button className={s.toggleBtn} type="button" onClick={this.toggleShowStore}>
           {isShowStore ? 'Hide' : 'Show'} store
         </button>
