@@ -3,6 +3,7 @@
 import * as React from 'react';
 import { observer, inject } from 'mobx-react';
 import Container from '_components/Container/Container';
+import ExtractStore from '_components/ExtractStore/ExtractStore';
 import type { StoreT } from 'store';
 import s from './App.scss';
 
@@ -18,8 +19,11 @@ class App extends React.PureComponent<Props, void> {
     const { rootContainer } = store;
     return (
       <div className={s.root}>
-        <div className={s.container}>
+        <div className={s.block}>
           <Container container={rootContainer} />
+        </div>
+        <div className={s.block}>
+          <ExtractStore />
         </div>
       </div>
     );
