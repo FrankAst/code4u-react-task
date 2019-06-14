@@ -1,5 +1,9 @@
 # code4u-react-task
 
+## Demo
+
+You can find a demo of the app [here](https://hardcore-cori-339b50.netlify.com/).
+
 ## Usage
 
 To start this application clone the repo and run folowing commands:
